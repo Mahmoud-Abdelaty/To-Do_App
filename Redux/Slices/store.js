@@ -10,18 +10,3 @@ export const store = configureStore({
     unCompletedTodos: unCompletedTodosSlice.reducer,
   },
 });
-
-// import { combineReducers, configureStore } from "@reduxjs/toolkit";
-// import todoReducer from "./todo";
-// import completedTodosReducer from "./completedTodos";
-// import unCompletedTodosReducer from "./unCompletedTodos";
-
-// const rootReducer = combineReducers({
-//   todo: todoReducer,
-//   completedTodos: completedTodosReducer,
-//   unCompletedTodos: unCompletedTodosReducer,
-// });
-
-// export const store = configureStore({
-//   reducer: rootReducer,
-// });

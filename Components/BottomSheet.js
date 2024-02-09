@@ -1,11 +1,6 @@
 import React, { useState } from "react";
 import DateTimePicker from "@react-native-community/datetimepicker";
-import {
-  Text,
-  View,
-  TouchableOpacity,
-  TextInput,
-} from "react-native";
+import { Text, View, TouchableOpacity, TextInput } from "react-native";
 import { addTodo } from "../Redux/Slices/todoSlice";
 import { unCompleteTodoAdd } from "../Redux/Slices/uncompletedSlice";
 import { styles } from "../styles/styles";
@@ -46,7 +41,6 @@ const BottomSheet = ({ setModalVisible }) => {
 
   const handleAddTask = () => {
     if (!title.trim()) {
-    
       alert("Title Can't be Empty");
       return;
     }
@@ -57,7 +51,7 @@ const BottomSheet = ({ setModalVisible }) => {
     }
 
     const todoExit = todos
-      .map((todo) => todo.title.toLowerCase())
+      .map((todo) => todo.title.toLowerCase().trim())
       .includes(title.toLowerCase());
 
     if (!todoExit) {
