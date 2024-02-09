@@ -90,7 +90,7 @@ const BottomSheet = ({ setModalVisible }) => {
     <View style={styles.bottomSheet}>
       <CustomAlert
         visible={alertVisible}
-        title="Error"
+        title="Error❗"
         message={error}
         onCancel={() => setModalVisible(false)}
         onConfirm={() => setAlertVisible(false)}

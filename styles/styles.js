@@ -137,4 +137,51 @@ export const styles = StyleSheet.create({
     color: "grey",
     margin: 15,
   },
+  containerAlert: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
+  },
+  contentAlert: {
+    backgroundColor: "#3F4080",
+    borderRadius: 10,
+    padding: 20,
+    width: "80%",
+    alignItems: "center",
+  },
+  titleAlert: {
+    fontSize: 25,
+    fontWeight: "bold",
+    marginBottom: 10,
+    color: "red",
+    fontWeight: "bold",
+  },
+  messageAlert: {
+    fontSize: 20,
+    marginBottom: 20,
+    color: "white",
+    fontWeight: "bold",
+  },
+  buttonsContainerAlert: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    width: "100%",
+  },
+  buttonAlert: {
+    padding: 10,
+    borderRadius: 5,
+    minWidth: 80,
+    alignItems: "center",
+  },
+  cancelButtonAlert: {
+    backgroundColor: "red",
+  },
+  okButtonAlert: {
+    backgroundColor: "green",
+  },
+  buttonTextAlert: {
+    color: "white",
+    fontWeight: "bold",
+  },
 });

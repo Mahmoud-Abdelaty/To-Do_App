@@ -1,5 +1,6 @@
 import React from "react";
 import { Modal, View, Text, TouchableOpacity } from "react-native";
+import { styles } from "../styles/styles";
 
 const CustomAlert = ({ visible, title, message, onCancel, onConfirm }) => {
   if (!visible) return null;
@@ -11,74 +12,28 @@ const CustomAlert = ({ visible, title, message, onCancel, onConfirm }) => {
       visible={visible}
       onRequestClose={onCancel}
     >
-      <View style={styles.container}>
-        <View style={styles.content}>
-          <Text style={styles.title}>{title}</Text>
-          <Text style={styles.message}>{message}</Text>
-          <View style={styles.buttonsContainer}>
+      <View style={styles.containerAlert}>
+        <View style={styles.contentAlert}>
+          <Text style={styles.titleAlert}>{title}</Text>
+          <Text style={styles.messageAlert}>{message}</Text>
+          <View style={styles.buttonsContainerAlert}>
             <TouchableOpacity
               onPress={onCancel}
-              style={[styles.button, styles.cancelButton]}
+              style={[styles.buttonAlert, styles.cancelButtonAlert]}
             >
-              <Text style={styles.buttonText}>Cancel</Text>
+              <Text style={styles.buttonTextAlert}>Cancel</Text>
             </TouchableOpacity>
             <TouchableOpacity
               onPress={onConfirm}
-              style={[styles.button, styles.okButton]}
+              style={[styles.buttonAlert, styles.okButtonAlert]}
             >
-              <Text style={styles.buttonText}>OK</Text>
+              <Text style={styles.buttonTextAlert}>OK</Text>
             </TouchableOpacity>
           </View>
         </View>
       </View>
     </Modal>
   );
-};
-
-const styles = {
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "rgba(0, 0, 0, 0.5)",
-  },
-  content: {
-    backgroundColor: "white",
-    borderRadius: 10,
-    padding: 20,
-    width: "80%",
-    alignItems: "center",
-  },
-  title: {
-    fontSize: 18,
-    fontWeight: "bold",
-    marginBottom: 10,
-  },
-  message: {
-    fontSize: 16,
-    marginBottom: 20,
-  },
-  buttonsContainer: {
-    flexDirection: "row",
-    justifyContent: "space-around",
-    width: "100%",
-  },
-  button: {
-    padding: 10,
-    borderRadius: 5,
-    minWidth: 80,
-    alignItems: "center",
-  },
-  cancelButton: {
-    backgroundColor: "red",
-  },
-  okButton: {
-    backgroundColor: "green",
-  },
-  buttonText: {
-    color: "white",
-    fontWeight: "bold",
-  },
 };
 
 export default CustomAlert;
