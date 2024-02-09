@@ -5,6 +5,7 @@ import { addTodo } from "../Redux/Slices/todoSlice";
 import { unCompleteTodoAdd } from "../Redux/Slices/uncompletedSlice";
 import { styles } from "../styles/styles";
 import { useSelector, useDispatch } from "react-redux";
+import CustomAlert from "../Components/Alert";
 
 const BottomSheet = ({ setModalVisible }) => {
   const [title, setTitle] = useState("");
@@ -13,6 +14,8 @@ const BottomSheet = ({ setModalVisible }) => {
   const [showTimePicker, setShowTimePicker] = useState(false);
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [selectedTime, setSelectedTime] = useState(new Date());
+  const [alertVisible, setAlertVisible] = useState(false);
+  const [error, setError] = useState("");
   const { todos } = useSelector((state) => state.todo);
   const dispatch = useDispatch();
 
@@ -41,12 +44,14 @@ const BottomSheet = ({ setModalVisible }) => {
 
   const handleAddTask = () => {
     if (!title.trim()) {
-      alert("Title Can't be Empty");
+      setAlertVisible(true);
+      setError("Title Can't be Empty");
       return;
     }
 
     if (!description.trim()) {
-      alert("Description Can't be Empty");
+      setAlertVisible(true);
+      setError("Description Can't be Empty");
       return;
     }
 
@@ -74,14 +79,22 @@ const BottomSheet = ({ setModalVisible }) => {
       dispatch(unCompleteTodoAdd(todoObject));
       setModalVisible(false);
     } else {
-      alert("Todo is already Exist");
+      setAlertVisible(true);
     }
 
     setTitle("");
     setDescription("");
   };
+
   return (
     <View style={styles.bottomSheet}>
+      <CustomAlert
+        visible={alertVisible}
+        title="Error"
+        message={error}
+        onCancel={() => setModalVisible(false)}
+        onConfirm={() => setAlertVisible(false)}
+      />
       <TextInput
         style={styles.input}
         placeholder="Title"
