@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Text, View, FlatList, TouchableOpacity } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import { useSelector, useDispatch } from "react-redux";
@@ -9,11 +9,13 @@ import { completeTodoAdd } from "../Redux/Slices/completedSlice";
 import { TodoDetails } from "../utils/Constants";
 import { useNavigation } from "@react-navigation/native";
 import { styles } from "../styles/styles";
+import CustomAlert from "../Components/Alert";
 
 const Todo = ({ todos }) => {
   const dispatch = useDispatch();
   const { completedTodos } = useSelector((state) => state.completedTodos);
-
+  const [alertVisible, setAlertVisible] = useState(false);
+  const [message, setMessage] = useState("");
   const navigation = useNavigation();
   const ShowDetails = (todo) => {
     navigation.navigate(TodoDetails, todo);
@@ -24,10 +26,11 @@ const Todo = ({ todos }) => {
     if (!isTodoCompleted) {
       dispatch(completeTodoAdd(todo));
       dispatch(unCompleteTodoDelete(todo.id));
-      
-      alert("Task added to Completed Todos Successfully");
+      setAlertVisible(true);
+      setMessage("Task added Successfully");
     } else {
-      alert("Tasks added already");
+      setAlertVisible(true);
+      setMessage("Tasks added already");
     }
   };
 
@@ -68,6 +71,14 @@ const Todo = ({ todos }) => {
               onPress={() => handleDeleteTask(item.id)}
             />
           </View>
+          <CustomAlert
+            visible={alertVisible}
+            title="Error❗"
+            message={message}
+            onConfirm={() => setAlertVisible(false)}
+            showCancel={false}
+            showConfirm={true}
+          />
         </TouchableOpacity>
       )}
       keyExtractor={(item) => item.id}

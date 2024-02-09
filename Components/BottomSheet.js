@@ -79,6 +79,7 @@ const BottomSheet = ({ setModalVisible }) => {
       dispatch(unCompleteTodoAdd(todoObject));
       setModalVisible(false);
     } else {
+      setError("Task Already Exist");
       setAlertVisible(true);
     }
 
@@ -94,6 +95,8 @@ const BottomSheet = ({ setModalVisible }) => {
         message={error}
         onCancel={() => setModalVisible(false)}
         onConfirm={() => setAlertVisible(false)}
+        showCancel={true}
+        showConfirm={true}
       />
       <TextInput
         style={styles.input}
