@@ -20,8 +20,11 @@ Each task in this project have time and date and title and description.
 
 
 
-<div style="background-color: #008000; padding: 20px; border-radius: 5px; color: red;">
+## Example HTML and CSS in README
+
+<div style="background-color: #f0f0f0; padding: 20px; border-radius: 5px;">
     <h2 style="color: blue;">Hello, GitHub!</h2>
-    <p style="font-size: 16px;">This is an example of using HTML and inline CSS styles in a GitHub README file.</p>
+    <p style="font-size: 16px; color: red;">This is an example of using HTML and inline CSS styles in a GitHub README file.</p>
     <button style="background-color: #007bff; color: #fff; padding: 10px 20px; border: none; border-radius: 3px; cursor: pointer;">Click Me</button>
 </div>
+
