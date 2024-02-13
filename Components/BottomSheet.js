@@ -56,7 +56,7 @@ const BottomSheet = ({ setModalVisible }) => {
     }
 
     const todoExit = todos
-      .map((todo) => todo.title.toLowerCase().trim())
+      .map((todo) => todo.title.toLowerCase())
       .includes(title.toLowerCase());
 
     if (!todoExit) {
